@@ -11,7 +11,7 @@ available_models = [m.name for m in genai.list_models() if 'generateContent' in 
 model_to_use = available_models[0] if available_models else 'models/gemini-1.5-flash'
 
 st.write(f"Using model: {model_to_use}") # This helps us see if it's working
-model = genai.GenerativeModel(model_to_use)
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 st.title("InquireAI")
 st.subheader("Turn your profile into a 1% success-rate email")
@@ -74,4 +74,5 @@ if st.button("Generate My Cold Email"):
         response = model.generate_content(prompt)
         
         st.success("Done! Copy the email below:")
+
         st.text_area("Your Final Email", value=response.text, height=400)
