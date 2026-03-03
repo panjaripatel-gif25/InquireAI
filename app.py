@@ -5,7 +5,7 @@ import google.generativeai as genai
 from pypdf import PdfReader
 
 # 1. SETUP THE BRAIN (Get your API key from Google AI Studio)
-genai.configure(api_key="AIzaSyDvj3keQTMogE7v8YMLuxEap5LslrRdZc8")
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 # FIND THE WORKING MODEL AUTOMATICALLY
 available_models = [m.name for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
 model_to_use = available_models[0] if available_models else 'models/gemini-1.5-flash'
